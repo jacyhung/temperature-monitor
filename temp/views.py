@@ -26,7 +26,12 @@ def querySensor():
     sensor.temperature = round((bme280.temperature * (9 / 5) + 32), 1)
     sensor.humidity = round(bme280.humidity, 1)
     sensor.pressure = round(bme280.pressure, 1)
-    temperature = sensor.temperature
+
+    cpuTempOutput = subprocess.check_output('vcgencmd measure_temp', shell=True)
+    string = str(cpuTempOutput)
+    cpuTempValue = string[7:11]
+
+    sensor.cputemp = cpuTempValue
     sensor.save()
 
 def temp(request):
@@ -54,11 +59,6 @@ def altitude(request):
     return HttpResponse(altitude)
 
 def cputemp(request):
-    cpuTempOutput = subprocess.check_output('vcgencmd measure_temp', shell=True)
-    string = str(cpuTempOutput)
-    cpuTempValue = string[7:11]
-
     sensor = Sensordata.objects.get(pk=1)
-    sensor.cputemp = cpuTempValue
-    sensor.save()
-    return HttpResponse(sensor.cputemp)
+    cputemp = sensor.cputemp
+    return HttpResponse(cputemp)
