@@ -30,8 +30,9 @@ sensor data at once or too quickly. The BME280 has worked flawlessly and my 1s i
 2. `python3 manage.py migrate`
 3. `python3 manage.py makemigrations`
 4. `python3 manage.py createsuperuser`
-<i>(This step is not necessary, although you need to create a Serverdata object either through the Admin GUI or manually.)</i>
-5. `python3 manage.py runserver`
+<i>(This step is not necessary, although you need to create a Serverdata object either through the Admin GUI or manually. You will get a model does not exist error if you do not create one.)</i>
+5. Create your Django secret key
+6. `python3 manage.py runserver`
 
 ## Credits
 <ul>
