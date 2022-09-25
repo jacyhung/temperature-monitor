@@ -15,3 +15,4 @@ RPi.GPIO==0.7.1
 sqlparse==0.4.3
 sysv-ipc==1.1.0
 typing-extensions==4.3.0
+apscheduler==3.9.1

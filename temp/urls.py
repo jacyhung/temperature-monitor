@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from temp.views import scheduleTask
 
 urlpatterns = [
     path('', views.index, name="index"),
@@ -9,3 +10,5 @@ urlpatterns = [
     path('altitude', views.altitude, name="altitude"),
     path('cputemp', views.cputemp, name="cputemp"),
 ]
+
+scheduleTask()

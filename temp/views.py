@@ -6,6 +6,7 @@ import os
 import subprocess
 import board
 from adafruit_bme280 import basic as adafruit_bme280
+from apscheduler.schedulers.background import BackgroundScheduler
 
 # from .forms import ImageUploadForm
 
@@ -13,7 +14,13 @@ from adafruit_bme280 import basic as adafruit_bme280
 def index(request):
     return render(request,'index.html')
 
-def temp(request):
+def scheduleTask():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(querySensor, 'interval', seconds=1)
+    scheduler.start()
+
+def querySensor():
+    print("Querying sensor data... updating database values")
     i2c = board.I2C()
     bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
     sensor = Sensordata.objects.get(pk=1)
@@ -23,6 +30,10 @@ def temp(request):
     sensor.pressure = round(bme280.pressure, 1)
     temperature = sensor.temperature
     sensor.save()
+
+def temp(request):
+    sensor = Sensordata.objects.get(pk=1)
+    temperature = sensor.temperature
     return HttpResponse(temperature)
 
 def humidity(request):
