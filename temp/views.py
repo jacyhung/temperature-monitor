@@ -8,8 +8,6 @@ import board
 from adafruit_bme280 import basic as adafruit_bme280
 from apscheduler.schedulers.background import BackgroundScheduler
 
-# from .forms import ImageUploadForm
-
 # Create your views here.
 def index(request):
     return render(request,'index.html')
