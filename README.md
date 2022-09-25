@@ -8,6 +8,7 @@ Django web app that grabs temperature &amp; other sensor data from a BME280 sens
 <ul>
 <li>Grabs sensor data via i2c</li>
 <li>Web app with live-updating values</li>
+<li>Adjustable scheduled interval for querying sensor</li>
 
 </ul>
 
