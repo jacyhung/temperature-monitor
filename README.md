@@ -1,7 +1,7 @@
 # Temperature Monitor
 Django web app that grabs temperature &amp; other sensor data from a BME280 sensor with a Raspberry Pi.
 
-![tmp](https://user-images.githubusercontent.com/13006956/192074768-d0e0afcf-ca6f-42cc-b6a6-33bea7a08910.gif)
+![temp](https://user-images.githubusercontent.com/13006956/192176239-e013a4ea-ad9b-40d4-acc9-d9efc6e872f4.gif)
 
 
 ## Features
